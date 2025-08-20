@@ -3,166 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magdalena i Jakub - 28.08.2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>Magdalena i Jakub - 28.08.2026</title>
+    
+    <!-- Importowanie ozdobnej czcionki z Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* Reset podstawowych stylów przeglądarki */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Stylizacja całej strony */
         body {
-            font-family: 'Playfair Display', serif;
-            background: linear-gradient(135deg, #f5f2e8 0%, #f0ead6 50%, #f5f2e8 100%);
+            /* Kremowe tło z delikatnym gradientem dla głębi */
+            background: linear-gradient(135deg, #fffaf0 0%, #f7efdf 50%, #f2e6cf 100%);
+            
+            /* Wyśrodkowanie zawartości na całej stronie */
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Dekoracyjne elementy tła */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .container {
+            
+            /* Podstawowe ustawienia tekstu */
+            font-family: 'Lora', serif;
+            color: #000000;
             text-align: center;
+            
+            /* Optymalizacja wyświetlania czcionek */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Kontener na główną zawartość */
+        .wedding-container {
             padding: 40px 20px;
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
+            max-width: 90%;
             width: 100%;
         }
 
+        /* Stylizacja imion */
         .names {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            font-weight: 700;
-            color: #2c2c2c;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            line-height: 1.2;
-        }
-
-        .date {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
             font-weight: 400;
-            color: #4a4a4a;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
+            color: #000000;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            /* Delikatny cień dla lepszej czytelności */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        /* Dekoracyjne elementy */
-        .ornament {
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-            margin: 20px auto;
-            position: relative;
+        /* Stylizacja daty */
+        .date {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #000000;
+            letter-spacing: 0.1em;
+            margin-bottom: 50px;
         }
 
-        .ornament::before,
-        .ornament::after {
-            content: '❋';
-            position: absolute;
+        /* Stylizacja sekcji licznika */
+        .countdown-section {
+            margin-top: 40px;
+        }
+
+        .countdown-title {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #555555;
+            margin-bottom: 25px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Kontener na licznik */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* Pojedynczy element licznika */
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px 15px;
+            min-width: 90px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Liczba w liczniku */
+        .countdown-number {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #000000;
+            display: block;
+            line-height: 1;
+        }
+
+        /* Etykieta w liczniku */
+        .countdown-label {
+            font-family: 'Lora', serif;
+            font-size: 0.85rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+        }
+
+        /* Stylizacja gdy ślub już się odbył */
+        .wedding-happened {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
             color: #d4af37;
-            font-size: 1.5rem;
-            top: -12px;
+            margin-top: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        .ornament::before {
-            left: -20px;
-        }
-
-        .ornament::after {
-            right: -20px;
-        }
-
-        /* Responsywność dla smartfonów */
+        /* Responsywność dla tabletów */
         @media (max-width: 768px) {
             .names {
-                font-size: 3.5rem;
+                font-size: 4rem;
             }
             
             .date {
                 font-size: 1.8rem;
+                margin-bottom: 40px;
             }
 
-            .container {
-                padding: 30px 15px;
+            .countdown-title {
+                font-size: 1.2rem;
+            }
+
+            .countdown-container {
+                gap: 20px;
+            }
+
+            .countdown-item {
+                min-width: 75px;
+                padding: 15px 12px;
+            }
+
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
             }
         }
 
+        /* Responsywność dla smartfonów */
         @media (max-width: 480px) {
+            .wedding-container {
+                padding: 30px 15px;
+            }
+            
             .names {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             
             .date {
                 font-size: 1.5rem;
-                letter-spacing: 1px;
+                letter-spacing: 0.05em;
+                margin-bottom: 30px;
             }
 
-            .ornament {
-                width: 120px;
+            .countdown-section {
+                margin-top: 30px;
+            }
+
+            .countdown-title {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+
+            .countdown-container {
+                gap: 15px;
+            }
+
+            .countdown-item {
+                min-width: 65px;
+                padding: 12px 8px;
+            }
+
+            .countdown-number {
+                font-size: 1.6rem;
+            }
+
+            .countdown-label {
+                font-size: 0.75rem;
+            }
+
+            .wedding-happened {
+                font-size: 2rem;
             }
         }
 
+        /* Responsywność dla bardzo małych ekranów */
         @media (max-width: 320px) {
             .names {
-                font-size: 2.4rem;
+                font-size: 2.5rem;
             }
             
             .date {
                 font-size: 1.3rem;
             }
-        }
 
-        /* Animacja wejścia */
-        .container {
-            animation: fadeInUp 1.5s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            .countdown-container {
+                gap: 10px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        /* Delikatny efekt hover dla całego kontenera na urządzeniach dotykowych */
-        @media (hover: hover) {
-            .container:hover .names {
-                transform: scale(1.05);
-                transition: transform 0.3s ease;
+            .countdown-item {
+                min-width: 55px;
+                padding: 10px 6px;
+            }
+
+            .countdown-number {
+                font-size: 1.4rem;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="wedding-container">
         <h1 class="names">Magdalena i Jakub</h1>
-        <div class="ornament"></div>
         <p class="date">28.08.2026</p>
+        
+        <div class="countdown-section">
+            
+            <div id="countdown" class="countdown-container">
+                <!-- Licznik zostanie wygenerowany przez JavaScript -->
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Ustawienie daty ślubu (28 sierpnia 2026, godzina 15:00)
+        const weddingDate = new Date('2026-08-28T15:00:00').getTime();
+        
+        // Funkcja zwracająca poprawną formę gramatyczną dla polskich słów
+        function getPolishForm(number, forms) {
+            if (number === 1) {
+                return forms[0]; // forma pojedyncza (1 dzień)
+            } else if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) {
+                return forms[1]; // forma mnoga dla 2-4 (2 dni)
+            } else {
+                return forms[2]; // forma mnoga dla reszty (5 dni)
+            }
+        }
+        
+        // Funkcja aktualizująca licznik
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+            
+            // Jeśli ślub już się odbył
+            if (timeLeft < 0) {
+                document.getElementById('countdown').innerHTML = 
+                    '<div class="wedding-happened">Właśnie się pobraliśmy! 💕</div>';
+                return;
+            }
+            
+            // Obliczanie czasu pozostałego
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            // Określanie poprawnych form gramatycznych
+            const dayLabel = getPolishForm(days, ['dzień', 'dni', 'dni']);
+            const hourLabel = getPolishForm(hours, ['godzina', 'godziny', 'godzin']);
+            const minuteLabel = getPolishForm(minutes, ['minuta', 'minuty', 'minut']);
+            const secondLabel = getPolishForm(seconds, ['sekunda', 'sekundy', 'sekund']);
+            
+            // Generowanie HTML dla licznika
+            document.getElementById('countdown').innerHTML = `
+                <div class="countdown-item">
+                    <span class="countdown-number">${days}</span>
+                    <span class="countdown-label">${dayLabel}</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${hours}</span>
+                    <span class="countdown-label">${hourLabel}</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${minutes}</span>
+                    <span class="countdown-label">${minuteLabel}</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${seconds}</span>
+                    <span class="countdown-label">${secondLabel}</span>
+                </div>
+            `;
+        }
+        
+        // Uruchomienie licznika przy załadowaniu strony
+        updateCountdown();
+        
+        // Aktualizacja licznika co sekundę
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        
+        // Funkcja obsługująca zmianę orientacji urządzenia (dla lepszej responsywności)
+        window.addEventListener('orientationchange', function() {
+            setTimeout(updateCountdown, 100);
+        });
+        
+        // Optymalizacja wydajności - zatrzymanie licznika gdy karta nie jest aktywna
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                clearInterval(countdownInterval);
+            } else {
+                setInterval(updateCountdown, 1000);
+                updateCountdown();
+            }
+        });
+    </script>
 </body>
 </html>
