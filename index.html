@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magdalena i Jakub - 28.08.2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #f5f2e8 0%, #f0ead6 50%, #f5f2e8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Dekoracyjne elementy tła */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+        }
+
+        .date {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #4a4a4a;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Dekoracyjne elementy */
+        .ornament {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .ornament::before,
+        .ornament::after {
+            content: '❋';
+            position: absolute;
+            color: #d4af37;
+            font-size: 1.5rem;
+            top: -12px;
+        }
+
+        .ornament::before {
+            left: -20px;
+        }
+
+        .ornament::after {
+            right: -20px;
+        }
+
+        /* Responsywność dla smartfonów */
+        @media (max-width: 768px) {
+            .names {
+                font-size: 3.5rem;
+            }
+            
+            .date {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .names {
+                font-size: 2.8rem;
+            }
+            
+            .date {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+
+            .ornament {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .names {
+                font-size: 2.4rem;
+            }
+            
+            .date {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Animacja wejścia */
+        .container {
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Delikatny efekt hover dla całego kontenera na urządzeniach dotykowych */
+        @media (hover: hover) {
+            .container:hover .names {
+                transform: scale(1.05);
+                transition: transform 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="names">Magdalena i Jakub</h1>
+        <div class="ornament"></div>
+        <p class="date">28.08.2026</p>
+    </div>
+</body>
+</html>
