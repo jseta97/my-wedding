@@ -26,29 +26,23 @@
             font-family: 'Lora', serif;
             color: #000000;
             text-align: center;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         .wedding-container {
             padding: 40px 20px;
-            max-width: 90%;
+            max-width: 100%;
             width: 100%;
         }
 
-        /* Imiona – brak zawijania i skalowanie */
         .names {
             font-family: 'Great Vibes', cursive;
             font-weight: 400;
             color: #000000;
             margin-bottom: 30px;
-            line-height: 1.1;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             white-space: nowrap;
             font-size: clamp(2rem, 10vw, 5rem);
         }
 
-        /* Data – brak zawijania i skalowanie */
         .date {
             font-family: 'Lora', serif;
             font-weight: 600;
@@ -56,68 +50,50 @@
             letter-spacing: 0.1em;
             margin-bottom: 50px;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             font-size: clamp(1rem, 5vw, 2rem);
         }
 
-        .countdown-section {
-            margin-top: 40px;
-        }
-
-        .countdown-title {
-            font-family: 'Lora', serif;
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: #555555;
-            margin-bottom: 25px;
-            letter-spacing: 0.05em;
-        }
-
-        /* Licznik w jednej linii, przewijanie na małych ekranach */
         .countdown-container {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: nowrap;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 10px;
+            width: 100%;
         }
 
         .countdown-item {
             background: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
-            padding: 20px 15px;
-            min-width: 70px;
+            padding: clamp(6px, 2vw, 20px);
+            flex: 1;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            flex: 1 1 auto;
             text-align: center;
-        }
-
-        .countdown-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            min-width: 0;
         }
 
         .countdown-number {
             font-family: 'Lora', serif;
-            font-size: clamp(0.6rem, 3vw, 1.1rem);
+            font-size: clamp(1rem, 6vw, 2.2rem);
             font-weight: 600;
-            color: #000000;
-            display: block;
-            line-height: 1;
         }
 
         .countdown-label {
             font-family: 'Lora', serif;
             font-size: clamp(0.6rem, 3vw, 0.85rem);
-            color: #666666;
+            color: #666;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-top: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        /* pełne etykiety domyślnie widoczne */
+        .label-full { display: inline; }
+        .label-short { display: none; }
+
+        /* na bardzo wąskich ekranach pokazuj skróty */
+        @media (max-width: 320px) {
+            .label-full { display: none; }
+            .label-short { display: inline; }
         }
 
         .wedding-happened {
@@ -125,7 +101,6 @@
             font-size: 2.5rem;
             color: #d4af37;
             margin-top: 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -134,22 +109,16 @@
         <h1 class="names">Magdalena i Jakub</h1>
         <p class="date">28.08.2026</p>
         
-        <div class="countdown-section">
-            <div id="countdown" class="countdown-container"></div>
-        </div>
+        <div class="countdown-container" id="countdown"></div>
     </div>
 
     <script>
         const weddingDate = new Date('2026-08-28T15:00:00').getTime();
         
         function getPolishForm(number, forms) {
-            if (number === 1) {
-                return forms[0];
-            } else if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) {
-                return forms[1];
-            } else {
-                return forms[2];
-            }
+            if (number === 1) return forms[0];
+            if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) return forms[1];
+            return forms[2];
         }
         
         function updateCountdown() {
@@ -167,46 +136,40 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
             
-            const dayLabel = getPolishForm(days, ['dzień', 'dni', 'dni']);
-            const hourLabel = getPolishForm(hours, ['godzina', 'godziny', 'godzin']);
-            const minuteLabel = getPolishForm(minutes, ['minuta', 'minuty', 'minut']);
-            const secondLabel = getPolishForm(seconds, ['sekunda', 'sekundy', 'sekund']);
-            
             document.getElementById('countdown').innerHTML = `
                 <div class="countdown-item">
                     <span class="countdown-number">${days}</span>
-                    <span class="countdown-label">${dayLabel}</span>
+                    <span class="countdown-label">
+                        <span class="label-full">${getPolishForm(days, ['dzień','dni','dni'])}</span>
+                        <span class="label-short">d</span>
+                    </span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number">${hours}</span>
-                    <span class="countdown-label">${hourLabel}</span>
+                    <span class="countdown-label">
+                        <span class="label-full">${getPolishForm(hours, ['godzina','godziny','godzin'])}</span>
+                        <span class="label-short">h</span>
+                    </span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number">${minutes}</span>
-                    <span class="countdown-label">${minuteLabel}</span>
+                    <span class="countdown-label">
+                        <span class="label-full">${getPolishForm(minutes, ['minuta','minuty','minut'])}</span>
+                        <span class="label-short">m</span>
+                    </span>
                 </div>
                 <div class="countdown-item">
                     <span class="countdown-number">${seconds}</span>
-                    <span class="countdown-label">${secondLabel}</span>
+                    <span class="countdown-label">
+                        <span class="label-full">${getPolishForm(seconds, ['sekunda','sekundy','sekund'])}</span>
+                        <span class="label-short">s</span>
+                    </span>
                 </div>
             `;
         }
         
         updateCountdown();
-        let countdownInterval = setInterval(updateCountdown, 1000);
-
-        window.addEventListener('orientationchange', function() {
-            setTimeout(updateCountdown, 100);
-        });
-
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                clearInterval(countdownInterval);
-            } else {
-                countdownInterval = setInterval(updateCountdown, 1000);
-                updateCountdown();
-            }
-        });
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
