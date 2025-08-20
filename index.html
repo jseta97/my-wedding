@@ -11,64 +11,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Reset podstawowych stylów przeglądarki */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Stylizacja całej strony */
         body {
-            /* Kremowe tło z delikatnym gradientem dla głębi */
             background: linear-gradient(135deg, #fffaf0 0%, #f7efdf 50%, #f2e6cf 100%);
-            
-            /* Wyśrodkowanie zawartości na całej stronie */
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            /* Podstawowe ustawienia tekstu */
             font-family: 'Lora', serif;
             color: #000000;
             text-align: center;
-            
-            /* Optymalizacja wyświetlania czcionek */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Kontener na główną zawartość */
         .wedding-container {
             padding: 40px 20px;
             max-width: 90%;
             width: 100%;
         }
 
-        /* Stylizacja imion */
+        /* Imiona – brak zawijania i skalowanie */
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 5rem;
             font-weight: 400;
             color: #000000;
             margin-bottom: 30px;
             line-height: 1.1;
-            /* Delikatny cień dla lepszej czytelności */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+            font-size: clamp(2rem, 10vw, 5rem);
         }
 
-        /* Stylizacja daty */
+        /* Data – brak zawijania i skalowanie */
         .date {
             font-family: 'Lora', serif;
-            font-size: 2rem;
             font-weight: 600;
             color: #000000;
             letter-spacing: 0.1em;
             margin-bottom: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: clamp(1rem, 5vw, 2rem);
         }
 
-        /* Stylizacja sekcji licznika */
         .countdown-section {
             margin-top: 40px;
         }
@@ -82,23 +74,27 @@
             letter-spacing: 0.05em;
         }
 
-        /* Kontener na licznik */
+        /* Licznik w jednej linii, przewijanie na małych ekranach */
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
+            gap: 15px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
         }
 
-        /* Pojedynczy element licznika */
         .countdown-item {
             background: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
             padding: 20px 15px;
-            min-width: 90px;
+            min-width: 70px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1 1 auto;
+            text-align: center;
         }
 
         .countdown-item:hover {
@@ -106,141 +102,30 @@
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         }
 
-        /* Liczba w liczniku */
         .countdown-number {
             font-family: 'Lora', serif;
-            font-size: 2.2rem;
+            font-size: clamp(1.2rem, 6vw, 2.2rem);
             font-weight: 600;
             color: #000000;
             display: block;
             line-height: 1;
         }
 
-        /* Etykieta w liczniku */
         .countdown-label {
             font-family: 'Lora', serif;
-            font-size: 0.85rem;
+            font-size: clamp(0.6rem, 3vw, 0.85rem);
             color: #666666;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 8px;
         }
 
-        /* Stylizacja gdy ślub już się odbył */
         .wedding-happened {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5rem;
             color: #d4af37;
             margin-top: 30px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsywność dla tabletów */
-        @media (max-width: 768px) {
-            .names {
-                font-size: 4rem;
-            }
-            
-            .date {
-                font-size: 1.8rem;
-                margin-bottom: 40px;
-            }
-
-            .countdown-title {
-                font-size: 1.2rem;
-            }
-
-            .countdown-container {
-                gap: 20px;
-            }
-
-            .countdown-item {
-                min-width: 75px;
-                padding: 15px 12px;
-            }
-
-            .countdown-number {
-                font-size: 1.8rem;
-            }
-
-            .countdown-label {
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Responsywność dla smartfonów */
-        @media (max-width: 480px) {
-            .wedding-container {
-                padding: 30px 15px;
-            }
-            
-            .names {
-                font-size: 3rem;
-            }
-            
-            .date {
-                font-size: 1.5rem;
-                letter-spacing: 0.05em;
-                margin-bottom: 30px;
-            }
-
-            .countdown-section {
-                margin-top: 30px;
-            }
-
-            .countdown-title {
-                font-size: 1.1rem;
-                margin-bottom: 20px;
-            }
-
-            .countdown-container {
-                gap: 15px;
-            }
-
-            .countdown-item {
-                min-width: 65px;
-                padding: 12px 8px;
-            }
-
-            .countdown-number {
-                font-size: 1.6rem;
-            }
-
-            .countdown-label {
-                font-size: 0.75rem;
-            }
-
-            .wedding-happened {
-                font-size: 2rem;
-            }
-        }
-
-        /* Responsywność dla bardzo małych ekranów */
-        @media (max-width: 320px) {
-            .names {
-                font-size: 2.5rem;
-            }
-            
-            .date {
-                font-size: 1.3rem;
-            }
-
-            .countdown-container {
-                gap: 10px;
-            }
-
-            .countdown-item {
-                min-width: 55px;
-                padding: 10px 6px;
-            }
-
-            .countdown-number {
-                font-size: 1.4rem;
-            }
-
-            .countdown-label {
-                font-size: 0.7rem;
-            }
         }
     </style>
 </head>
@@ -250,53 +135,43 @@
         <p class="date">28.08.2026</p>
         
         <div class="countdown-section">
-            
-            <div id="countdown" class="countdown-container">
-                <!-- Licznik zostanie wygenerowany przez JavaScript -->
-            </div>
+            <div id="countdown" class="countdown-container"></div>
         </div>
     </div>
 
     <script>
-        // Ustawienie daty ślubu (28 sierpnia 2026, godzina 15:00)
         const weddingDate = new Date('2026-08-28T15:00:00').getTime();
         
-        // Funkcja zwracająca poprawną formę gramatyczną dla polskich słów
         function getPolishForm(number, forms) {
             if (number === 1) {
-                return forms[0]; // forma pojedyncza (1 dzień)
+                return forms[0];
             } else if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) {
-                return forms[1]; // forma mnoga dla 2-4 (2 dni)
+                return forms[1];
             } else {
-                return forms[2]; // forma mnoga dla reszty (5 dni)
+                return forms[2];
             }
         }
         
-        // Funkcja aktualizująca licznik
         function updateCountdown() {
             const now = new Date().getTime();
             const timeLeft = weddingDate - now;
             
-            // Jeśli ślub już się odbył
             if (timeLeft < 0) {
                 document.getElementById('countdown').innerHTML = 
                     '<div class="wedding-happened">Właśnie się pobraliśmy! 💕</div>';
                 return;
             }
             
-            // Obliczanie czasu pozostałego
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
             
-            // Określanie poprawnych form gramatycznych
             const dayLabel = getPolishForm(days, ['dzień', 'dni', 'dni']);
             const hourLabel = getPolishForm(hours, ['godzina', 'godziny', 'godzin']);
             const minuteLabel = getPolishForm(minutes, ['minuta', 'minuty', 'minut']);
             const secondLabel = getPolishForm(seconds, ['sekunda', 'sekundy', 'sekund']);
             
-            // Generowanie HTML dla licznika
             document.getElementById('countdown').innerHTML = `
                 <div class="countdown-item">
                     <span class="countdown-number">${days}</span>
@@ -317,23 +192,18 @@
             `;
         }
         
-        // Uruchomienie licznika przy załadowaniu strony
         updateCountdown();
-        
-        // Aktualizacja licznika co sekundę
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        
-        // Funkcja obsługująca zmianę orientacji urządzenia (dla lepszej responsywności)
+        let countdownInterval = setInterval(updateCountdown, 1000);
+
         window.addEventListener('orientationchange', function() {
             setTimeout(updateCountdown, 100);
         });
-        
-        // Optymalizacja wydajności - zatrzymanie licznika gdy karta nie jest aktywna
+
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 clearInterval(countdownInterval);
             } else {
-                setInterval(updateCountdown, 1000);
+                countdownInterval = setInterval(updateCountdown, 1000);
                 updateCountdown();
             }
         });
