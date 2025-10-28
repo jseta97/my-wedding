@@ -1,175 +1,345 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magdalena i Jakub - 28.08.2026</title>
-    
-    <!-- Importowanie ozdobnej czcionki z Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;600&display=swap" rel="stylesheet">
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Nasze Wesele — Jakub & Magdalena</title>
+    <meta name="description" content="Zaproszenie i informacje o weselu Jakub & Magdalena" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root{
+          --bg:#fffaf6;
+          --accent:#c47b7b;
+          --accent-2:#6b8f8f;
+          --muted:#6b6b6b;
+          --card:#ffffff;
+          --glass: rgba(255,255,255,0.65);
+          --max-width:1100px;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+          margin:0;
+          background: linear-gradient(180deg, #fffaf6 0%, #f7f7ff 100%);
+          font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+          color:#222;
+          -webkit-font-smoothing:antialiased;
+          -moz-osx-font-smoothing:grayscale;
+          line-height:1.45;
         }
 
-        body {
-            background: linear-gradient(135deg, #fffaf0 0%, #f7efdf 50%, #f2e6cf 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Lora', serif;
-            color: #000000;
-            text-align: center;
+        .container{
+          max-width:var(--max-width);
+          margin:0 auto;
+          padding:24px;
         }
 
-        .wedding-container {
-            padding: 40px 20px;
-            max-width: 100%;
-            width: 100%;
+        header{
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:16px;
+          padding:18px 0;
+        }
+        .logo{
+          display:flex;
+          gap:12px;
+          align-items:center;
+        }
+        .logo .crest{
+          width:56px;height:56px;border-radius:50%;
+          background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.1)), linear-gradient(135deg,#f7a6a6,#c5dfe0);
+          display:flex;align-items:center;justify-content:center;
+          font-family:'Playfair Display', serif;
+          font-weight:700;color:#fff;font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,0.08);
+        }
+        nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
+        nav a:hover{color:var(--accent)}
+
+        /* Hero */
+        .hero{
+          display:grid;
+          grid-template-columns: 1fr 380px;
+          gap:28px;
+          align-items:center;
+          margin:18px 0 36px;
+        }
+        @media(max-width:900px){ .hero{grid-template-columns:1fr;}}
+        .hero-card{
+          background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+          border-radius:20px;padding:28px;
+          box-shadow: 0 10px 40px rgba(80,70,100,0.06);
+          backdrop-filter: blur(6px);
+        }
+        .couple{
+          font-family:'Playfair Display', serif;
+          font-size:40px;
+          margin:0 0 6px;color:#3c3c3c;
+        }
+        .date{
+          color:var(--accent-2); font-weight:600;margin-bottom:14px;
+        }
+        .lead{color:var(--muted);margin-bottom:18px}
+        .cta{display:flex;gap:12px;flex-wrap:wrap}
+        .btn{
+          background:var(--accent);color:white;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;
+          box-shadow: 0 6px 18px rgba(196,123,123,0.18);
+        }
+        .btn.secondary{background:transparent;color:var(--accent);border:2px solid rgba(196,123,123,0.12)}
+        .card-side{
+          border-radius:16px;padding:18px;
+          background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+          box-shadow:0 8px 30px rgba(60,60,80,0.05);
+        }
+        .when{font-weight:700;margin-bottom:8px}
+        .where{color:var(--muted);font-size:14px;margin-bottom:8px}
+        .map{
+          height:180px;border-radius:12px;overflow:hidden;background:#eee;
+          display:flex;align-items:center;justify-content:center;color:#999;font-weight:700;
         }
 
-        .names {
-            font-family: 'Great Vibes', cursive;
-            font-weight: 400;
-            color: #000000;
-            margin-bottom: 30px;
-            white-space: nowrap;
-            font-size: clamp(2rem, 10vw, 5rem);
-        }
+        /* Sections */
+        section{margin:28px 0;padding:18px 0;border-top:1px dashed rgba(0,0,0,0.04)}
+        h2{font-family:'Playfair Display', serif;margin:6px 0 12px;font-size:22px}
+        p{margin:0 0 10px;color:var(--muted)}
 
-        .date {
-            font-family: 'Lora', serif;
-            font-weight: 600;
-            color: #000000;
-            letter-spacing: 0.1em;
-            margin-bottom: 50px;
-            white-space: nowrap;
-            font-size: clamp(1rem, 5vw, 2rem);
+        .grid{
+          display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
         }
+        @media(max-width:900px){ .grid{grid-template-columns:repeat(1,1fr)}}
 
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: nowrap;
-            width: 100%;
+        .info-card{
+          background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.03);
         }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 12px;
-            padding: clamp(6px, 2vw, 20px);
-            flex: 1;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            text-align: center;
-            min-width: 0;
+        .timeline{
+          list-style:none;padding:0;margin:0;
         }
+        .timeline li{padding:12px 0;border-bottom:1px dashed rgba(0,0,0,0.04);display:flex;align-items:center;gap:12px}
+        .time-badge{min-width:72px;font-weight:700;color:var(--accent-2)}
 
-        .countdown-number {
-            font-family: 'Lora', serif;
-            font-size: clamp(1rem, 6vw, 2.2rem);
-            font-weight: 600;
+        /* Gallery */
+        .gallery{
+          display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
         }
+        @media(max-width:1100px){.gallery{grid-template-columns:repeat(2,1fr)}}
+        .gallery img{width:100%;height:160px;object-fit:cover;border-radius:8px;cursor:pointer;display:block}
 
-        .countdown-label {
-            font-family: 'Lora', serif;
-            font-size: clamp(0.6rem, 3vw, 0.85rem);
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        /* RSVP */
+        .rsvp-form{
+          display:grid;grid-template-columns:1fr 1fr;gap:12px;
         }
-
-        /* pełne etykiety domyślnie widoczne */
-        .label-full { display: inline; }
-        .label-short { display: none; }
-
-        /* na bardzo wąskich ekranach pokazuj skróty */
-        @media (max-width: 320px) {
-            .label-full { display: none; }
-            .label-short { display: inline; }
+        @media(max-width:700px){.rsvp-form{grid-template-columns:1fr}}
+        label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+        input,textarea,select{
+          width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);
+          font-size:14px;font-family:inherit;
         }
+        .rsvp-footer{display:flex;gap:12px;align-items:center;margin-top:8px}
+        .note{font-size:13px;color:#666}
 
-        .wedding-happened {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
-            color: #d4af37;
-            margin-top: 30px;
+        /* Lightbox overlay */
+        .lightbox{
+          position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:1200;
         }
+        .lightbox img{max-width:90%;max-height:85%;border-radius:6px;box-shadow:0 12px 60px rgba(0,0,0,0.6)}
+
+        footer{padding:20px 0;color:#666;text-align:center;font-size:14px}
+
+        /* small helpers */
+        .muted{color:var(--muted)}
+        .center{text-align:center}
+        .small{font-size:13px;color:#777}
     </style>
 </head>
 <body>
-    <div class="wedding-container">
-        <h1 class="names">Magdalena i Jakub</h1>
-        <p class="date">28.08.2026</p>
-        
-        <div class="countdown-container" id="countdown"></div>
-    </div>
+<div class="container">
+    <header>
+        <div class="logo">
+            <div class="crest">M&A</div>
+            <div>
+                <div style="font-weight:700">Jakub & Magdalena</div>
+                <div style="font-size:13px;color:var(--muted)">Zaproszenie ślubne</div>
+            </div>
+        </div>
+        <nav>
+            <a href="#about">O nas</a>
+            <a href="#event">Wydarzenie</a>
+            <a href="#gallery">Galeria</a>
+            <a href="#rsvp">RSVP</a>
+        </nav>
+    </header>
 
-    <script>
-        const weddingDate = new Date('2026-08-28T15:00:00').getTime();
-        
-        function getPolishForm(number, forms) {
-            if (number === 1) return forms[0];
-            if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) return forms[1];
-            return forms[2];
-        }
-        
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const timeLeft = weddingDate - now;
-            
-            if (timeLeft < 0) {
-                document.getElementById('countdown').innerHTML = 
-                    '<div class="wedding-happened">Właśnie się pobraliśmy! 💕</div>';
-                return;
-            }
-            
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown').innerHTML = `
-                <div class="countdown-item">
-                    <span class="countdown-number">${days}</span>
-                    <span class="countdown-label">
-                        <span class="label-full">${getPolishForm(days, ['dzień','dni','dni'])}</span>
-                        <span class="label-short">d</span>
-                    </span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number">${hours}</span>
-                    <span class="countdown-label">
-                        <span class="label-full">${getPolishForm(hours, ['godzina','godziny','godzin'])}</span>
-                        <span class="label-short">h</span>
-                    </span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number">${minutes}</span>
-                    <span class="countdown-label">
-                        <span class="label-full">${getPolishForm(minutes, ['minuta','minuty','minut'])}</span>
-                        <span class="label-short">m</span>
-                    </span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number">${seconds}</span>
-                    <span class="countdown-label">
-                        <span class="label-full">${getPolishForm(seconds, ['sekunda','sekundy','sekund'])}</span>
-                        <span class="label-short">s</span>
-                    </span>
-                </div>
-            `;
-        }
-        
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
+    <!-- HERO -->
+    <main class="hero">
+        <div class="hero-card">
+            <h1 class="couple">Jakub & Magdalena</h1>
+            <div class="date">Sobota, 12 lipca 2026 — 15:00</div>
+            <p class="lead">Z radością zapraszamy Cię na nasz ślub i przyjęcie. Przyjdź świętować razem z nami — będzie dużo miłości, tańca i dobrej muzyki.</p>
+            <div class="cta">
+                <a class="btn" href="#rsvp">Potwierdź przybycie</a>
+                <a class="btn secondary" href="#gallery">Zobacz zdjęcia</a>
+            </div>
+        </div>
+
+        <aside class="card-side">
+            <div class="when">Ceremonia & Przyjęcie</div>
+            <div class="where">Restauracja Umami <br> gen. Sikorskiego 46, 44-120 Pyskowice</div>
+            <div class="map" id="map">
+                <!-- Możesz tu wstawić iframe z Google Maps -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.6722529999483!2d18.620299511656615!3d50.39130799150248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471125aa45a14015%3A0x150736f57d8fb999!2sUmami!5e0!3m2!1spl!2spl!4v1761639873378!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </aside>
+    </main>
+
+    <!-- About -->
+    <section id="about">
+        <h2>O nas</h2>
+        <div class="grid">
+            <div class="info-card">
+                <h3 style="margin-top:0;font-family:'Playfair Display'">Jak się poznaliśmy</h3>
+                <p class="muted">Krótka, wzruszająca (lub zabawna) historia o tym jak się poznaliście. Możesz tu wstawić 2-3 zdania — np. "Poznaliśmy się na uczelni, przy wspólnym projekcie…".</p>
+            </div>
+            <div class="info-card">
+                <h3 style="margin-top:0;font-family:'Playfair Display'">Nasze plany</h3>
+                <p class="muted">Kilka słów o planach na ślub i wesele — co będzie wyjątkowego, co warto wiedzieć o dojeździe, noclegach, prezentach itp.</p>
+            </div>
+            <div class="info-card center">
+                <div style="font-weight:700;font-size:18px">Kontakt</div>
+                <div class="small muted">tel. +48 600 000 000<br/>email: przyklad@example.com</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event -->
+    <section id="event">
+        <h2>Plan dnia</h2>
+        <div class="info-card">
+            <ul class="timeline">
+                <li><div class="time-badge">14:30</div><div><strong>Przyjazd gości</strong><div class="small muted">Powitanie i przekąski</div></div></li>
+                <li><div class="time-badge">15:00</div><div><strong>Ceremonia ślubna</strong><div class="small muted">Kościół św. Anny</div></div></li>
+                <li><div class="time-badge">17:00</div><div><strong>Przejazd do sali</strong><div class="small muted">Krótka sesja zdjęciowa</div></div></li>
+                <li><div class="time-badge">18:00</div><div><strong>Przyjęcie</strong><div class="small muted">Kolacja, pierwszy taniec, zabawa</div></div></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Galeria</h2>
+        <p class="muted">Kilka zdjęć z naszych wspólnych chwil.</p>
+        <div class="gallery" id="galleryGrid">
+            <!-- Przykładowe zdjęcia z Unsplash - zastąp własnymi -->
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=60" alt="photo1">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=60" alt="photo2">
+            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=60" alt="photo3">
+            <img src="https://images.unsplash.com/photo-1542816411-0c8b7b2b8e36?auto=format&fit=crop&w=1200&q=60" alt="photo4">
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp">
+        <h2>Potwierdź przybycie (RSVP)</h2>
+        <p class="muted">Prosimy o potwierdzenie do 1 czerwca 2026.</p>
+        <form id="rsvpForm" class="rsvp-form" onsubmit="return handleRSVP(event)">
+            <div>
+                <label for="name">Imię i nazwisko</label>
+                <input id="name" name="name" required placeholder="Twoje imię i nazwisko">
+            </div>
+            <div>
+                <label for="guests">Liczba osób</label>
+                <select id="guests" name="guests" required>
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4+</option>
+                </select>
+            </div>
+            <div style="grid-column:1/3">
+                <label for="message">Wiadomość / Uwagi (np. alergie, życzenia)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Napisz coś..."></textarea>
+            </div>
+
+            <div style="grid-column:1/3" class="rsvp-footer">
+                <button class="btn" type="submit">Potwierdź</button>
+                <div class="note">Po wysłaniu dane zapiszą się w Twojej przeglądarce (demo). Możesz też podać email, żeby otrzymać potwierdzenie.</div>
+            </div>
+        </form>
+        <div id="rsvpResult" style="margin-top:12px"></div>
+    </section>
+
+    <footer>
+        <div>&copy; <span id="year"></span> Jakub & Magdalena — Dziękujemy za wsparcie i miłość.</div>
+    </footer>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="expanded">
+</div>
+
+<script>
+    // dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Gallery lightbox
+    const gallery = document.getElementById('galleryGrid');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    gallery.querySelectorAll('img').forEach(img=>{
+      img.addEventListener('click', e=>{
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+    function closeLightbox(){ lightbox.style.display='none'; lightboxImg.src=''; }
+
+    // Simple RSVP handler
+    function handleRSVP(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const guests = document.getElementById('guests').value;
+      const message = document.getElementById('message').value.trim();
+
+      if(!name){ alert('Proszę podać imię i nazwisko.'); return false; }
+
+      // Save to localStorage (demo). Replace with fetch()/mailto for backend.
+      const saved = JSON.parse(localStorage.getItem('rsvps') || '[]');
+      saved.push({name, guests, message, date: new Date().toISOString()});
+      localStorage.setItem('rsvps', JSON.stringify(saved));
+
+      // show confirmation
+      const result = document.getElementById('rsvpResult');
+      result.innerHTML = '<div style="padding:12px;border-radius:10px;background:linear-gradient(90deg,#e9f7f7,#f5f1fa);box-shadow:0 8px 24px rgba(0,0,0,0.03)"><strong>Dziękujemy, ' + escapeHtml(name) + '!</strong> Twoje potwierdzenie zostało zapisane.</div>';
+
+      // reset form
+      e.target.reset();
+      return false;
+    }
+
+    function escapeHtml(text){
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    // Optional: Auto-populate map iframe placeholder with real Google Maps embed if you paste iframe HTML into the "map" div.
+    // Example how to embed Google Maps:
+    // document.getElementById('map').innerHTML = '<iframe src="PASTE_GOOGLE_MAPS_EMBED_URL" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy"></iframe>';
+
+    // Smooth scroll for nav
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', function(ev){
+        ev.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // Accessibility: close lightbox on Esc
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeLightbox();
+    });
+</script>
 </body>
 </html>
