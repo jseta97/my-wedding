@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="pl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Nasze Wesele — Jakub & Magdalena</title>
-    <meta name="description" content="Zaproszenie i informacje o weselu Jakub & Magdalena" />
+    <meta name="description" content="Zaproszenie i informacje o weselu Jakub & Magdalena"/>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+          rel="stylesheet">
     <style>
         :root{
           --bg:#fffaf6;
@@ -56,6 +57,74 @@
         }
         nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
         nav a:hover{color:var(--accent)}
+
+        /* --- MENU HAMBURGER --- */
+        nav.navbar {
+          position: relative;
+        }
+
+        .menu-toggle {
+          display: none;
+          font-size: 26px;
+          cursor: pointer;
+          user-select: none;
+          padding: 6px 10px;
+          border-radius: 6px;
+          transition: background 0.3s;
+        }
+        .menu-toggle:hover {
+          background: rgba(0,0,0,0.05);
+        }
+
+        .menu {
+          list-style: none;
+          display: flex;
+          gap: 14px;
+          margin: 0;
+          padding: 0;
+        }
+        .menu li a {
+          text-decoration: none;
+          color: var(--muted);
+          font-weight: 600;
+        }
+        .menu li a:hover {
+          color: var(--accent);
+        }
+
+        /* Widok mobilny */
+        @media (max-width: 800px) {
+          .menu-toggle {
+            display: block;
+          }
+
+          .menu {
+            display: none;
+            flex-direction: column;
+            background: white;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 180px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            z-index: 1000;
+          }
+
+          .menu.show {
+            display: flex;
+          }
+
+          .menu li {
+            padding: 8px 16px;
+          }
+
+          .menu li a {
+            display: block;
+            width: 100%;
+          }
+        }
 
         /* Hero */
         .hero{
@@ -162,11 +231,14 @@
                 <div style="font-size:13px;color:var(--muted)">Zaproszenie ślubne</div>
             </div>
         </div>
-        <nav>
-            <a href="#about">Informacje</a><br/>
-            <a href="#event">Plan dnia</a><br/>
-            <a href="#gallery">Galeria</a><br/>
-            <a href="#rsvp">Formularz</a><br/>
+        <nav class="navbar">
+            <div class="menu-toggle" id="menuToggle">☰</div>
+            <ul class="menu" id="menuList">
+                <li><a href="#about">Informacje</a></li>
+                <li><a href="#event">Plan dnia</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#rsvp">Formularz</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -187,7 +259,9 @@
             <div class="where">Restauracja Umami <br> gen. Sikorskiego 46, 44-120 Pyskowice</div>
             <div class="map" id="map">
                 <!-- Możesz tu wstawić iframe z Google Maps -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.6722529999483!2d18.620299511656615!3d50.39130799150248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471125aa45a14015%3A0x150736f57d8fb999!2sUmami!5e0!3m2!1spl!2spl!4v1761639873378!5m2!1spl!2spl" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.6722529999483!2d18.620299511656615!3d50.39130799150248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471125aa45a14015%3A0x150736f57d8fb999!2sUmami!5e0!3m2!1spl!2spl!4v1761639873378!5m2!1spl!2spl"
+                        width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </aside>
     </main>
@@ -199,7 +273,9 @@
             <div class="info-card">
                 <h3 style="margin-top:0;font-family:'Playfair Display'">Hotel</h3>
                 <p class="muted">Malinowski Leśny<br/>Toszecka 137, 44-117 Gliwice</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2546.9939915840673!2d18.64945221165274!3d50.32936334595705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4711314dc75b7def%3A0x3a27dba001aefd5!2sMalinowski%20Le%C5%9Bny!5e0!3m2!1spl!2spl!4v1761644759938!5m2!1spl!2spl" width="100%" height="140" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2546.9939915840673!2d18.64945221165274!3d50.32936334595705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4711314dc75b7def%3A0x3a27dba001aefd5!2sMalinowski%20Le%C5%9Bny!5e0!3m2!1spl!2spl!4v1761644759938!5m2!1spl!2spl"
+                        width="100%" height="140" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="info-card">
                 <h3 style="margin-top:0;font-family:'Playfair Display'">Transport</h3>
@@ -282,6 +358,18 @@
 <script>
     // dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hamburger toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('menuList').classList.toggle('show');
+    });
+
+    // Close menu after select
+    document.querySelectorAll('#menuList a').forEach(a=>{
+      a.addEventListener('click', ()=> document.getElementById('menuList').classList.remove('show'));
+    });
+
+
 
     // Gallery lightbox
     const gallery = document.getElementById('galleryGrid');
