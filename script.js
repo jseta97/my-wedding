@@ -48,3 +48,46 @@
     document.addEventListener('keydown', (e)=>{
       if(e.key === 'Escape') closeLightbox();
     });
+
+    // Toggle contact information visibility with encoding
+    const toggleContactBtn = document.getElementById('toggleContactBtn');
+    const contactPhones = document.querySelectorAll('.contact-phone');
+    const contactEmails = document.querySelectorAll('.contact-email');
+    let contactVisible = false;
+
+    // Base64 decode function
+    function decodeBase64(encoded) {
+        try {
+            return atob(encoded);
+        } catch (e) {
+            return '';
+        }
+    }
+
+    toggleContactBtn.addEventListener('click', function() {
+        contactVisible = !contactVisible;
+
+        if (contactVisible) {
+            // Decode and show real values
+            contactPhones.forEach(span => {
+                span.textContent = decodeBase64(span.getAttribute('data-encoded'));
+            });
+            contactEmails.forEach(span => {
+                span.textContent = decodeBase64(span.getAttribute('data-encoded'));
+            });
+            toggleContactBtn.textContent = 'Ukryj kontakt';
+        } else {
+            // Mask again
+            contactPhones.forEach(span => {
+                const decodedPhone = decodeBase64(span.getAttribute('data-encoded'));
+                span.textContent = decodedPhone.substring(0, 4) + '*** *** ' + decodedPhone.substring(decodedPhone.length - 3);
+            });
+            contactEmails.forEach(span => {
+                const decodedEmail = decodeBase64(span.getAttribute('data-encoded'));
+                const username = decodedEmail.split('@')[0];
+                const domain = decodedEmail.split('@')[1];
+                span.textContent = username.charAt(0) + '*******' + '@' + domain;
+            });
+            toggleContactBtn.textContent = 'Pokaż kontakt';
+        }
+    });
