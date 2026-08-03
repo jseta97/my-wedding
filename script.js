@@ -91,3 +91,64 @@
             toggleContactBtn.textContent = 'Pokaż kontakt';
         }
     });
+
+// Table assignment data
+const tableAssignments = [
+  { name: "Muzyk", table: 3 },
+  { name: "Krakowska", table: 3 },
+  { name: "Krakowski", table: 3 },
+  { name: "Śleziak", table: 3 },
+  { name: "Dróżdż", table: 3 },
+  { name: "Szuba", table: 3 },
+
+  { name: "Kazała", table: 4 },
+  { name: "Noga", table: 4 },
+  { name: "Fidos", table: 4 },
+  { name: "Ślusarczyk", table: 4 },
+  { name: "Kowalska", table: 4 },
+  { name: "Polak", table: 4 },
+  { name: "Świat", table: 4 },
+  { name: "Zawłocki", table: 4 },
+  { name: "Gacek", table: 4 },
+  { name: "Borek", table: 4 },
+  { name: "Piątek", table: 4 },
+  { name: "Duda", table: 4 },
+
+  { name: "Borkowska", table: 5 },
+  { name: "Dziuba", table: 5 },
+  { name: "Mucha", table: 5 },
+  { name: "Partyk", table: 5 },
+  { name: "Trybalski", table: 5 },
+  { name: "Korab", table: 5 },
+  { name: "Kurek", table: 5 },
+  { name: "Kawałkiewicz", table: 5 },
+  { name: "Nowosielska", table: 5 },
+  { name: "Kaleta", table: 5 },
+
+  { name: "Seta", table: 6 },
+  { name: "Kaźmierczak", table: 6 },
+  { name: "Kęsek", table: 6 },
+  { name: "Usarek", table: 6 },
+
+  { name: "Gawleta", table: 7 },
+  { name: "Purchla", table: 7 },
+  { name: "Ciepłowska", table: 7 },
+  { name: "Ciepłowski", table: 7 },
+  { name: "Michalska", table: 7 },
+  { name: "Michalski", table: 7 }
+];
+
+// Find table functionality
+document.getElementById('searchButton')?.addEventListener('click', function() {
+  const input = document.getElementById('guestName').value.trim();
+  if (!input) {
+    document.getElementById('searchResult').textContent = 'Proszę wpisać imię i nazwisko.';
+    return;
+  }
+  const found = tableAssignments.find(entry => entry.name.toLowerCase() === input.toLowerCase());
+  if (found) {
+    document.getElementById('searchResult').innerHTML = `Twój numer stolika: <strong>${escapeHtml(found.table.toString())}</strong>`;
+  } else {
+    document.getElementById('searchResult').textContent = 'Nie znaleziono gościa.';
+  }
+});
