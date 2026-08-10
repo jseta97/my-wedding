@@ -94,6 +94,26 @@
 
 // Table assignment data
 const tableAssignments = [
+  { name: "Szuba", table: 1 },
+  { name: "Malina", table: 1 },
+  { name: "Sawicka", table: 1 },
+  { name: "Sawicki", table: 1 },
+  { name: "Kotasińska", table: 1 },
+  { name: "Mellem", table: 1 },
+  { name: "Sokalska", table: 1 },
+  { name: "Moliński", table: 1 },
+  { name: "Derejczyk", table: 1 },
+
+  { name: "Mielczarek", table: 2 },
+  { name: "Łapkowski", table: 2 },
+  { name: "Stemplewski", table: 2 },
+  { name: "Stemplewska", table: 2 },
+  { name: "Strzelbicka", table: 2 },
+  { name: "Strzelbicki", table: 2 },
+  { name: "Samol", table: 2 },
+  { name: "Nowakowski", table: 2 },
+  { name: "Simka", table: 2 },
+
   { name: "Muzyk", table: 3 },
   { name: "Krakowska", table: 3 },
   { name: "Krakowski", table: 3 },
