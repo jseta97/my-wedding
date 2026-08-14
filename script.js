@@ -94,7 +94,7 @@
 
 // Table assignment data
 const tableAssignments = [
-  { name: "Szuba", table: 1 },
+  { name: "Shuba", table: 1 },
   { name: "Malina", table: 1 },
   { name: "Sawicka", table: 1 },
   { name: "Sawicki", table: 1 },
