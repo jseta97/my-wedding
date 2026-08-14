@@ -119,7 +119,7 @@ const tableAssignments = [
   { name: "Krakowski", table: 3 },
   { name: "Śleziak", table: 3 },
   { name: "Dróżdż", table: 3 },
-  { name: "Szuba", table: 3 },
+  { name: "Szuba", table: "3-Paweł Szuba, 1-Paulina Szuba" },
 
   { name: "Kazała", table: 4 },
   { name: "Noga", table: 4 },
